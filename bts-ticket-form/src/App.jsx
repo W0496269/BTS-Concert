@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 
 function App() {
-  console.log("App loaded"); // For debugging
+  console.log("App loaded");
 
   const initialTicketData = {
     ConcertId: 1,
@@ -32,12 +32,15 @@ function App() {
     try {
       // Use the absolute URL to your API endpoint.
       const apiUrl = 'https://nscc-0496269-ticketsapi-cxcvbwgcbrahfgeh.canadacentral-01.azurewebsites.net/api/tickets';
-      console.log("Posting to:", apiUrl); // Log URL for debugging
+      console.log("Posting to:", apiUrl); 
+      const jsonData = JSON.stringify(ticketData);
 
+      console.log(jsonData);
+      
       const response = await fetch(apiUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(ticketData)
+        body: jsonData
       });
 
       if (response.ok) {
